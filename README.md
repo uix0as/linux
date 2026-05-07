@@ -1,5 +1,4 @@
 # dns 서버 
----
 su -
 
 (비밀번호 입력하기)
@@ -44,14 +43,16 @@ vi /etc/resolv.conf
 nameserver {방금 전 실행한 ifconfig ens33에서 나온 ip 주소}
 ```
 (nslookup server 해서 한번 확인하기)
+
 named-checkconf /etc/bind/named.conf.options
 
 systemctl restart named
+
 systemctl enable named
+
 systemctl status named <- 서버 상태 확인
 
 # 마스터 서버
----
 cd /etc/bind
 
 vi named.conf.local
@@ -78,7 +79,6 @@ vi db.woojak.com
 named-checkzone woojak.com /etc/bind/db.woojak.com (오타 확인용 OK 뜨면 잘 된거 👍)
 
 # 웹 서버
---- 
 apt -y install apache2
 
 systemctl restart apache2
